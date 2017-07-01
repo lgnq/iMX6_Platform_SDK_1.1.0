@@ -72,6 +72,7 @@ void board_ioexpander_init(void)
     max7310_i2c_req_array[1].dev_addr = MAX7310_I2C_ID1;    // the I2C DEVICE address
     max7310_init(1, MAX7310_ID1_DEF_DIR, MAX7310_ID1_DEF_VAL);
 #endif
+    
 #if defined(BOARD_SABRE_AI)
     max7310_i2c_req_array[2].ctl_addr = HW_I2C3; // the I2C controller base address
     max7310_i2c_req_array[2].dev_addr = MAX7310_I2C_ID2;    // the I2C DEVICE address

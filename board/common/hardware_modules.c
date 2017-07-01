@@ -43,7 +43,7 @@
 // Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-#if defined(BOARD_SMART_DEVICE)
+#if defined(BOARD_SMART_DEVICE) || defined(BOARD_WANDBOARD)
 uint32_t g_debug_uart_port = HW_UART1;
 #else
 uint32_t g_debug_uart_port = HW_UART4;

@@ -28,74 +28,30 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #-------------------------------------------------------------------------------
 
-#-------------------------------------------------------------------------------
-# Target and board configuration
-#-------------------------------------------------------------------------------
+include $(SDK_ROOT)/mk/common.mk
 
-# Handle lower-case versions of the config variables. These are really meant to ease
-# manual invocation of make via the command line.
-ifdef target
-TARGET = $(target)
-endif
-ifdef board
-BOARD = $(board)
-endif
-ifdef boardrev
-BOARD_REVISION = $(boardrev)
-endif
 
-# Target
-ifeq "$(TARGET)" "mx6dq"
-DEFINES += -DCHIP_MX6DQ
-CPU	= cortex-a9
-else ifeq "$(TARGET)" "mx6sdl"
-DEFINES += -DCHIP_MX6SDL
-CPU	= cortex-a9
-else ifeq "$(TARGET)" "mx6sl"
-DEFINES += -DCHIP_MX6SL
-CPU	= cortex-a9
-else ifdef TARGET
-$(error Unknown target $(TARGET))
-endif
+TARGET_LIB_NAME := board_$(BOARD_WITH_REV)
 
-# Board
-ifeq "$(BOARD)" "evb"
-DEFINES += -DBOARD_EVB
-else ifeq "$(BOARD)" "evk"
-DEFINES += -DBOARD_EVK
-else ifeq "$(BOARD)" "sabre_ai"
-DEFINES += -DBOARD_SABRE_AI
-else ifeq "$(BOARD)" "smart_device"
-DEFINES += -DBOARD_SMART_DEVICE
-else ifeq "$(BOARD)" "wandboard"
-DEFINES += -DBOARD_WANDBOARD
-else ifdef BOARD
-$(error Unknown board $(BOARD))
-endif
+SOURCES := \
+	$(SDK_ROOT)/board/common/hardware_modules.c \
+	$(SDK_ROOT)/board/common/board_io_expanders.c \
+	$(SDK_ROOT)/board/common/board_i2c.c \
+	$(SDK_ROOT)/board/common/board_audio.c \
+	$(SDK_ROOT)/board/common/board_buttons.c \
+	$(SDK_ROOT)/board/common/board_camera.c \
+	$(SDK_ROOT)/board/common/board_can.c \
+	$(SDK_ROOT)/board/common/board_display.c \
+	$(SDK_ROOT)/board/common/board_hdmi.c \
+	$(SDK_ROOT)/board/common/board_mipi.c \
+	$(SDK_ROOT)/board/common/board_nand.c \
+	$(SDK_ROOT)/board/common/board_network.c \
+	$(SDK_ROOT)/board/common/board_pcie.c \
+	$(SDK_ROOT)/board/common/board_sata.c \
+	$(SDK_ROOT)/board/common/board_usb.c \
+	$(SDK_ROOT)/board/common/board_usdhc.c \
+	$(SDK_ROOT)/board/$(TARGET)/$(BOARD)/dcd.c \
+	$(wildcard rev_$(BOARD_REVISION)_iomux/*.c)
 
-# Board revision, defaults to a if not specified.
-ifndef BOARD_REVISION
-BOARD_REVISION = a
-BOARD_REVISION_IS_DEFAULT = yes
-endif
-ifeq "$(BOARD_REVISION)" "c"
-DEFINES +=-DBOARD_REV_C
-else ifeq "$(BOARD_REVISION)" "b"
-DEFINES +=-DBOARD_REV_B
-else ifeq "$(BOARD_REVISION)" "a"
-DEFINES +=-DBOARD_REV_A
-else ifdef BOARD_REVISION
-$(error Unknown board revision $(BOARD_REVISION))
-endif
 
-# Only define this variable if a board is specified.
-ifdef BOARD
-BOARD_WITH_REV := $(BOARD)_rev_$(BOARD_REVISION)
-endif
-
-# Set this define to 1 if we want to build thumb binaries, or 0 for ARM.
-USE_THUMB ?= 0
-
-# Enable debug build by default.
-DEBUG ?= 1
-
+include $(SDK_ROOT)/mk/targets.mk

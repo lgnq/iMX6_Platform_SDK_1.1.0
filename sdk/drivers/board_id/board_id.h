@@ -94,6 +94,7 @@ void show_board_id(const fsl_board_id_t board_id, const char* const indent);
 #define BOARD_TYPE_SMART_DEVICE 0x2
 #define BOARD_TYPE_EVB          0x4
 #define BOARD_TYPE_EVK          0x5
+#define BOARD_TYPE_WANDBOARD    0x6
 //@}
 
 //! @name Board Revision
@@ -124,6 +125,8 @@ void show_board_id(const fsl_board_id_t board_id, const char* const indent);
 #define BOARD_TYPE            BOARD_TYPE_EVB
 #elif defined(BOARD_EVK)
 #define BOARD_TYPE            BOARD_TYPE_EVK
+#elif defined(BOARD_WANDBOARD)
+#define BOARD_TYPE            BOARD_TYPE_WANDBOARD
 #else
 #error Need to define a board type
 #endif

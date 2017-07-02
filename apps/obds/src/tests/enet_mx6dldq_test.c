@@ -45,7 +45,7 @@
 const char g_ar8031_test_name[] = "RGMII AR8031 G-Ethernet Test";
 const char g_KSZ9021RN_test_name[] = "RGMII KSZ9021RN G-Ethernet Test";
 
-#if defined(BOARD_SMART_DEVICE) || defined(BOARD_SABRE_AI) || (defined(CHIP_MX6SL) && defined(BOARD_EVK))
+#if defined(BOARD_SMART_DEVICE) || defined(BOARD_SABRE_AI) || defined(BOARD_WANDBOARD) || (defined(CHIP_MX6SL) && defined(BOARD_EVK))
 #define ENET_PHY_ADDR 1
 #endif
 

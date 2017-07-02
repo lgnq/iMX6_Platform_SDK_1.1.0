@@ -61,7 +61,7 @@
 
 #if CHIP_MX6DQ || CHIP_MX6SDL
 //! @todo Fix me to make me board-independant!! Put me in board lib.
-#if defined(BOARD_SMART_DEVICE) || defined(BOARD_SABRE_AI)
+#if defined(BOARD_SMART_DEVICE) || defined(BOARD_SABRE_AI) || defined(BOARD_WANDBOARD)
 #define ENET_PHY_ADDR 1
 #elif defined(BOARD_EVB)
 #define ENET_PHY_ADDR 0

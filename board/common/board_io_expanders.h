@@ -37,7 +37,7 @@
 /* 
  * BOARD_SMART_DEVICE for compile error
  */
-#if defined(BOARD_SMART_DEVICE)
+#if defined(BOARD_SMART_DEVICE) || defined(BOARD_WANDBOARD) 
 #define MAX7310_NBR 0
 #endif
 

@@ -128,6 +128,20 @@ ifeq "$(BOARD)" "smart_device"
         $(SDK_LIB_ROOT)/drivers/accelerometer/test
 endif
 
+# Tests that are only available on the wandboard board.
+ifeq "$(BOARD)" "wandboard"
+    SUBDIRS += \
+        $(SDK_LIB_ROOT)/drivers/mipi/test \
+        $(SDK_LIB_ROOT)/drivers/usb/test \
+        $(SDK_LIB_ROOT)/drivers/flexcan/test \
+        $(SDK_LIB_ROOT)/drivers/eim/test \
+        $(SDK_LIB_ROOT)/drivers/pcie/test \
+        $(SDK_LIB_ROOT)/drivers/spi/test \
+        $(SDK_LIB_ROOT)/drivers/camera/test \
+        $(SDK_LIB_ROOT)/drivers/enet/test \
+        $(SDK_LIB_ROOT)/drivers/accelerometer/test
+endif
+
 ifeq "$(BOARD)" "evk"
     SUBDIRS += \
 	$(SDK_LIB_ROOT)/drivers/usb/test \

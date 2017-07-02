@@ -45,7 +45,7 @@ void accelerometer_test(void)
     
     printf("\n== Accelerometer Test ==\n\n");
 
-#if BOARD_SMART_DEVICE || BOARD_SABRE_AI
+#if BOARD_SMART_DEVICE || BOARD_SABRE_AI || BOARD_WANDBOARD
 
 #if defined(BOARD_SMART_DEVICE)
     // Make sure Audio codec, also on I2C1, is powered up to

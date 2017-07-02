@@ -38,7 +38,7 @@
 #include "sdk.h"
 #include "enet/enet.h"
 
-#if defined(BOARD_SMART_DEVICE) || defined(BOARD_SABRE_AI)
+#if defined(BOARD_SMART_DEVICE) || defined(BOARD_SABRE_AI) || defined(BOARD_WANDBOARD)
 #define ENET_PHY_ADDR 1
 #elif defined(BOARD_EVB)
 #define ENET_PHY_ADDR 0
